@@ -134,7 +134,12 @@ export default {
     methods: {
         getImagePath(imgPath) {
             return new URL(imgPath, import.meta.url).href;
-        }
+        },
+
+        getRandomImage(source) {
+            let randomNumber = Math.floor(Math.random() * source.length);
+            return source[randomNumber].icon;
+        },
     }
 }
 </script>
@@ -148,7 +153,7 @@ export default {
             <ul class="icons">
                 <li class="icon" v-for="icon in 25">
                     <div class="icon-img">
-                        <img src="" alt="">
+                        <img :src="getImagePath(`public/images/icons/${source[0].icon}`)" alt="icon">
                     </div>
                     <div>{{ icon }}</div>
                 </li>
