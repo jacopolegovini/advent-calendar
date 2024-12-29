@@ -153,7 +153,7 @@ export default {
             <ul class="icons">
                 <li class="icon" v-for="icon in 25">
                     <div class="icon-img">
-                        <img :src="getImagePath(`public/images/icons/${source[0].icon}`)" alt="icon">
+                        <img :src="getImagePath(`../../public/images/icons/${getRandomImage(source)}.png`)" alt="icon">
                     </div>
                     <div>{{ icon }}</div>
                 </li>
