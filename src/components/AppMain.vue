@@ -317,20 +317,23 @@ header img {
     background-color: #E689B5;
     position: absolute;
     top: 30%;
-    left: 50%;
+    left: 21%;
     border-radius: 10px;
-    padding: 20px 0;
+    padding: 20px 0px;
 }
 
 .icon-clicked-text {
-    height: 80%;
     text-align: center;
-    padding: 0 20px;
     font-weight: bold;
     display: flex;
     flex-direction: column;
     gap: 20px;
     align-items: center;
     justify-content: center;
+}
+
+.icon-clicked-text p {
+    padding: 0 20px;
+    margin: 0;
 }
 </style>
