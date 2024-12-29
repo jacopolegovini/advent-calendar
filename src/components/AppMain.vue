@@ -148,6 +148,10 @@ export default {
             this.clicked = !this.clicked;
             this.iconNumber = index;
         }
+    },
+
+    computed: {
+
     }
 }
 </script>
@@ -170,10 +174,21 @@ export default {
                 </ul>
             </main>
         </div>
-        <div class="advent-calendar-clicked" v-if="clicked">
-            <img :src="getImagePath(`../../public/${source[iconNumber].url}`)" alt="icon-gif"
-                v-if="source[iconNumber].type === 'image'">
-            <p v-else>{{ source[iconNumber].text }}</p>
+        <div class="advent-calendar-clicked-image-type">
+            <div class="icon-clicked-gif" v-if="clicked && source[iconNumber].type === 'image'">
+                <div class="icon-clicked-img">
+                    <img :src="getImagePath(`../../public/${source[iconNumber].url}`)" alt="icon-gif">
+                </div>
+                <button class="btn btn-primary" @click="openIcon">Chiudi</button>
+            </div>
+        </div>
+        <div class="advent-calendar-clicked-text-type" v-if="clicked && source[iconNumber].type === 'text'">
+            <div class="icon-clicked-text">
+                <div class="icon-clicked">
+                    <p>{{ source[iconNumber].text }}</p>
+                </div>
+                <button class="btn btn-primary" @click="openIcon">Chiudi</button>
+            </div>
         </div>
     </div>
 </template>
@@ -270,10 +285,52 @@ header img {
     opacity: 0.5;
 }
 
-.advent-calendar-clicked {
+.advent-calendar-clicked-image-type {
     background-color: #E689B5;
     position: absolute;
-    top: 50%;
+    top: 30%;
+    left: 38%;
+    border-radius: 10px;
+}
+
+.icon-clicked-gif {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.icon-clicked-img {
+    display: flex;
+    justify-content: center;
+}
+
+.advent-calendar-clicked-image-type img {
+    width: 90%;
+    object-fit: cover;
+}
+
+.advent-calendar-clicked-text-type {
+    background-color: #E689B5;
+    position: absolute;
+    top: 30%;
     left: 50%;
+    border-radius: 10px;
+    padding: 20px 0;
+}
+
+.icon-clicked-text {
+    height: 80%;
+    text-align: center;
+    padding: 0 20px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
 }
 </style>
