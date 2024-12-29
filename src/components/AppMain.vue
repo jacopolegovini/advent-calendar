@@ -129,6 +129,9 @@ export default {
                     "url": "images/dance.gif"
                 }
             ],
+
+            clicked: false,
+            iconNumber: null,
         }
     },
     methods: {
@@ -140,25 +143,38 @@ export default {
             let randomNumber = Math.floor(Math.random() * source.length);
             return source[randomNumber].icon;
         },
+
+        openIcon(index) {
+            this.clicked = !this.clicked;
+            this.iconNumber = index;
+        }
     }
 }
 </script>
 
 <template>
     <div class="page">
-        <header class="container img-container">
-            <img src="../../images/header-bg.png" alt="header">
-        </header>
-        <main class="container icons-container">
-            <ul class="icons">
-                <li class="icon" v-for="icon in 25">
-                    <div class="icon-img">
-                        <img :src="getImagePath(`../../public/images/icons/${getRandomImage(source)}.png`)" alt="icon">
-                    </div>
-                    <div class="icon-text">{{ icon }}</div>
-                </li>
-            </ul>
-        </main>
+        <div class="advent-calendar container" :class="clicked ? 'advent-calendar-close' : ''">
+            <header class="img-container">
+                <img src="../../images/header-bg.png" alt="header">
+            </header>
+            <main class="icons-container">
+                <ul class="icons">
+                    <li class="icon" v-for="(icon, index) in 25" :key="index" @click="openIcon(index)">
+                        <div class="icon-img">
+                            <img :src="getImagePath(`../../public/images/icons/${getRandomImage(source)}.png`)"
+                                alt="icon">
+                        </div>
+                        <div class="icon-text">{{ icon }}</div>
+                    </li>
+                </ul>
+            </main>
+        </div>
+        <div class="advent-calendar-clicked" v-if="clicked">
+            <img :src="getImagePath(`../../public/${source[iconNumber].url}`)" alt="icon-gif"
+                v-if="source[iconNumber].type === 'image'">
+            <p v-else>{{ source[iconNumber].text }}</p>
+        </div>
     </div>
 </template>
 
@@ -187,6 +203,12 @@ li:last-child {
     overflow-y: hidden;
 }
 
+.advent-calendar {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 /* Header */
 .img-container {
@@ -240,5 +262,18 @@ header img {
 .icon-text {
     font-size: 3rem;
     line-height: 50px;
+}
+
+
+/* Advent calendar clicked */
+.advent-calendar-close {
+    opacity: 0.5;
+}
+
+.advent-calendar-clicked {
+    background-color: #E689B5;
+    position: absolute;
+    top: 50%;
+    left: 50%;
 }
 </style>
