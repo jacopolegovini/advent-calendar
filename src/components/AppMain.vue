@@ -155,7 +155,7 @@ export default {
                     <div class="icon-img">
                         <img :src="getImagePath(`../../public/images/icons/${getRandomImage(source)}.png`)" alt="icon">
                     </div>
-                    <div>{{ icon }}</div>
+                    <div class="icon-text">{{ icon }}</div>
                 </li>
             </ul>
         </main>
@@ -176,6 +176,8 @@ li {
 
 li:last-child {
     width: 100%;
+    background-color: #D4D6F5;
+    color: #2E6754;
 }
 
 
@@ -226,5 +228,17 @@ header img {
     height: 90px;
     color: white;
     font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.icon-img img {
+    width: 2rem;
+}
+
+.icon-text {
+    font-size: 3rem;
+    line-height: 50px;
 }
 </style>
