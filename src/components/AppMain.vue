@@ -145,23 +145,57 @@ export default {
             <img src="../../images/header-bg.png" alt="header">
         </header>
         <main class="container icons-container">
-            <div class="icons">
-                <div class="icon" v-for="icon in 24">
+            <ul class="icons">
+                <li class="icon" v-for="icon in 25">
                     <div class="icon-img">
                         <img src="" alt="">
                     </div>
                     <div>{{ icon }}</div>
-                </div>
-            </div>
+                </li>
+            </ul>
         </main>
     </div>
 </template>
 
 <style scoped>
-header img {
-    background-color: #2D28EB;
+/* General */
+ul {
+    padding: 0;
+    margin: 0;
 }
 
+li {
+    list-style-type: none;
+    text-align: center;
+}
+
+li:last-child {
+    width: 100%;
+}
+
+
+/* General page */
+.page {
+    height: 100vh;
+    overflow-y: hidden;
+}
+
+
+/* Header */
+.img-container {
+    height: 40%;
+    display: flex;
+    justify-content: center;
+}
+
+header img {
+    background-color: #2D28EB;
+    width: 1040px;
+    object-fit: cover;
+    object-position: 0 105px;
+}
+
+/* Main */
 .img-container,
 .icons-container {
     width: 1040px;
@@ -169,6 +203,7 @@ header img {
 
 .icons-container {
     margin-top: 20px;
+    height: 60%;
 }
 
 .icons {
@@ -177,14 +212,13 @@ header img {
     gap: 30px;
     row-gap: 20px;
     flex-wrap: wrap;
-    width: 1040px;
 }
 
 .icon {
     background-color: #2E6754;
     border-radius: 10px;
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
     color: white;
     font-weight: bold;
 }
