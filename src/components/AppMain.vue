@@ -132,6 +132,7 @@ export default {
 
             clicked: false,
             iconNumber: null,
+            cardsClicked: Array(25).fill(false)
         }
     },
     methods: {
@@ -147,6 +148,7 @@ export default {
         openIcon(index) {
             this.clicked = !this.clicked;
             this.iconNumber = index;
+            this.cardsClicked[index] = true;
         }
     },
 
@@ -164,12 +166,13 @@ export default {
             </header>
             <main class="icons-container">
                 <ul class="icons">
-                    <li class="icon" v-for="(icon, index) in 25" :key="index" @click="openIcon(index)">
-                        <div class="icon-img">
-                            <img :src="getImagePath(`../../public/images/icons/${getRandomImage(source)}.png`)"
-                                alt="icon">
+                    <li v-for="(icon, index) in 25" :key="index" @click="openIcon(index)">
+                        <div :class="cardsClicked[index] ? 'icon-clicked-visibility' : 'icon'">
+                            <div class="icon-img">
+                                <img :src="getImagePath(`/images/icons/${getRandomImage(source)}.png`)" alt="icon">
+                            </div>
+                            <div class="icon-text">{{ icon }}</div>
                         </div>
-                        <div class="icon-text">{{ icon }}</div>
                     </li>
                 </ul>
             </main>
@@ -207,8 +210,13 @@ li {
 
 li:last-child {
     width: 100%;
+}
+
+li:last-child * {
+    width: 100%;
     background-color: #D4D6F5;
     color: #2E6754;
+    border-radius: 10px;
 }
 
 
@@ -335,5 +343,18 @@ header img {
 .icon-clicked-text p {
     padding: 0 20px;
     margin: 0;
+}
+
+.icon-clicked-visibility {
+    opacity: 0.3;
+    background-color: #100645;
+    border-radius: 10px;
+    width: 90px;
+    height: 90px;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 </style>
