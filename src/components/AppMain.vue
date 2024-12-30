@@ -180,7 +180,7 @@ export default {
         <div class="advent-calendar-clicked-image-type">
             <div class="icon-clicked-gif" v-if="clicked && source[iconNumber].type === 'image'">
                 <div class="icon-clicked-img">
-                    <img :src="getImagePath(`../../public/${source[iconNumber].url}`)" alt="icon-gif">
+                    <img :src="getImagePath(`/${source[iconNumber].url}`)" alt="icon-gif">
                 </div>
                 <button class="btn btn-primary" @click="openIcon">Chiudi</button>
             </div>
@@ -245,6 +245,7 @@ header img {
     width: 1040px;
     object-fit: cover;
     object-position: 0 105px;
+    border-radius: 10px;
 }
 
 /* Main */
