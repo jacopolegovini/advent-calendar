@@ -278,6 +278,10 @@ header img {
     justify-content: center;
 }
 
+.icon:hover {
+    cursor: pointer;
+}
+
 .icon-img img {
     width: 2rem;
 }
@@ -296,8 +300,9 @@ header img {
 .advent-calendar-clicked-image-type {
     background-color: #E689B5;
     position: absolute;
-    top: 30%;
-    left: 38%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     border-radius: 10px;
 }
 
@@ -324,8 +329,9 @@ header img {
 .advent-calendar-clicked-text-type {
     background-color: #E689B5;
     position: absolute;
-    top: 30%;
-    left: 21%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     border-radius: 10px;
     padding: 20px 0px;
 }
