@@ -132,7 +132,16 @@ export default {
 
             clicked: false,
             iconNumber: null,
-            cardsClicked: Array(25).fill(false)
+            cardsClicked: Array(25).fill(false),
+
+        }
+    },
+    watch: {
+        cardsClicked: {
+            handler(newVal) {
+                localStorage.setItem('cardsClicked', JSON.stringify(newVal));
+            },
+            deep: true
         }
     },
     methods: {
@@ -152,8 +161,11 @@ export default {
         }
     },
 
-    computed: {
-
+    created() {
+        const savedCardsClicked = localStorage.getItem('cardsClicked');
+        if (savedCardsClicked) {
+            this.cardsClicked = JSON.parse(savedCardsClicked);
+        }
     }
 }
 </script>
