@@ -158,6 +158,9 @@ export default {
             this.clicked = !this.clicked;
             this.iconNumber = index;
             this.cardsClicked[index] = true;
+        },
+        resetMemory() {
+            localStorage.removeItem('cardsClicked');
         }
     },
 
@@ -187,6 +190,7 @@ export default {
                         </div>
                     </li>
                 </ul>
+                <button class="btn btn-secondary mt-3" @click="resetMemory">Reset</button>
             </main>
         </div>
         <div class="advent-calendar-clicked-image-type">
