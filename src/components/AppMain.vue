@@ -161,6 +161,7 @@ export default {
         },
         resetMemory() {
             localStorage.removeItem('cardsClicked');
+            location.reload();
         }
     },
 
@@ -190,7 +191,7 @@ export default {
                         </div>
                     </li>
                 </ul>
-                <button class="btn btn-secondary mt-3" @click="resetMemory">Reset</button>
+                <button class="btn" @click="resetMemory">Reset</button>
             </main>
         </div>
         <div class="advent-calendar-clicked-image-type">
@@ -273,6 +274,9 @@ header img {
 .icons-container {
     margin-top: 20px;
     height: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .icons {
@@ -306,6 +310,14 @@ header img {
 .icon-text {
     font-size: 3rem;
     line-height: 50px;
+}
+
+.icons-container .btn {
+    padding: 10px 12px;
+    background-color: #2D28EB;
+    border-radius: 10px;
+    color: white;
+    margin-top: 15px;
 }
 
 
