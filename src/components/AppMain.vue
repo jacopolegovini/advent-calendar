@@ -240,7 +240,8 @@ li:last-child * {
 /* General page */
 .page {
     height: 100vh;
-    overflow-y: hidden;
+    background-color: #100645;
+    font-family: livvic, sans-serif;
 }
 
 .advent-calendar {
@@ -268,7 +269,8 @@ header img {
 /* Main */
 .img-container,
 .icons-container {
-    width: 1040px;
+    max-width: 1040px;
+    margin: 0 auto;
 }
 
 .icons-container {
